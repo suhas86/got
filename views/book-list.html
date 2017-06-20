@@ -1,0 +1,4 @@
+
+<div ng-if="isbooks"><a  ng-href="#/book/{{item.name}}" type="button" class="btn btn-info">{{item.name}}</a></div>
+<div ng-if="ischars"><a  ng-href="#/char/{{item.url.slice(-1)}}" type="button" class="btn btn-success">{{item.aliases[0]}}</a></div>
+<div ng-if="ishouses"><a  ng-href="#/house/{{item.name}}" type="button" class="btn btn-danger">{{item.name}}</a></div>

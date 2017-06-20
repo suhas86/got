@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+    <button type="button" class="btn btn-primary" ng-click="mainList.loadAllBooks();query=''"
+    >All Books</button>
+    </div>
+    <div class="col-xs-12 col-md-3">
+    <button type="button" class="btn btn-success" ng-click="mainList.loadAllChars();query=''">
+        All Characters</button>
+    </div>
+    <div class="col-xs-12 col-md-3">
+        <button type="button" class="btn btn-danger" ng-click="mainList.loadAllHouses();query=''">
+            All Houses</button>
+    </div>
+</div>
+<br>
+<div class="clear-fix"></div>
+<div class="row" ng-init="mainList.loadAllBooks()">
+    <div class="col-lg-12 
+            col-md-12 ">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+            <button type="button" class="btn btn-default"
+            ng-click="mytoggle=!mytoggle">Sort by Name</button>
+                </div>  
+              <div class="col-xs-12 col-md-3">
+             <form class="form-inline">
+            <input ng-model="query.name" type="text"
+            placeholder="Filter by Name" autofocus>
+            </form>
+            </div>
+            <div ng-show="mainList.showBooks">
+            <div class="col-xs-12 col-md-3">
+             <form class="form-inline">
+            <input ng-model="query.authors" type="text"
+            placeholder="Filter by Author" autofocus>
+            </form>
+            </div>
+            <div class="col-xs-12 col-md-3">
+             <form class="form-inline">
+            <input ng-model="query.publisher" type="text"
+            placeholder="Filter by Publisher" autofocus>
+            </form>
+            </div> 
+            </div> 
+           
+            <div ng-show="mainList.showHouses">
+            <div class="col-xs-12 col-md-3">
+             <form class="form-inline">
+            <input ng-model="query.region" type="text"
+            placeholder="Filter by Region" autofocus>
+            </form>
+            </div>
+            </div>
+             <div ng-show="mainList.showChars">
+            
+            <div class="col-xs-12 col-md-3">
+             <form class="form-inline">
+            <input ng-model="query.aliases" type="text"
+            placeholder="Filter by Alias" autofocus>
+            </form>
+            </div>
+            <div class="col-xs-12 col-md-3">
+             <form class="form-inline">
+            <input ng-model="query.culture" type="text"
+            placeholder="Filter by Culture" autofocus>
+            </form>
+            </div>
+            
+            </div>
+
+            </div>
+           
+           
+            <br>
+       
+         <h3>{{mainList.heading}}</h3>
+         
+            <div ng-repeat="item in mainList.data | filter:query
+                    |orderBy: !mytoggle? 'name':'-name' ">
+            <book-list item="item" isbooks="mainList.showBooks"
+            ischars="mainList.showChars"
+            ishouses="mainList.showHouses"></book-list>
+    </div>  
+   
+   
+    </div>
+</div>
